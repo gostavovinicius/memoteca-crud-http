@@ -37,4 +37,10 @@ function manipularCancelamento() {
 
 async function manipularBusca() {
     const termoBusca = document.getElementById('campo-busca').value
+    try {
+        const pensamentosFiltrados = await api.buscarPensamentoPorTermo(termoBusca)
+        ui.renderizarPensamentos(pensamentosFiltrados)
+    } catch (error) {
+        alert('Erro ao realizar busca!')
+    }
 }
