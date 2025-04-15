@@ -4,67 +4,84 @@
       "id": "2a56",
       "favorito": false,
       "conteudo": "Vc faz TI? Conserta meu celular!",
-      "autoria": "Grupo da família"
+      "autoria": "Grupo da família",
+      "data": "2024-01-10T14:30:00.123Z"
     },
     {
       "id": "4c7d",
       "favorito": false,
       "conteudo": "Da vida reclama, mas sem ela não vive!",
-      "autoria": "Mestre Yoda"
+      "autoria": "Mestre Yoda",
+      "data": "2024-02-15T09:15:00.456Z"
     },
     {
       "id": "5b8a",
       "favorito": false,
       "conteudo": "Na minha máquina funciona!",
-      "autoria": "Dev"
+      "autoria": "Dev",
+      "data": "2024-03-03T17:45:00.789Z"
     },
     {
       "id": "68uy",
       "favorito": false,
       "conteudo": "Esse é de laranja que parece de limão, mas tem gosto de tamarindo!",
-      "autoria": "Chaves"
+      "autoria": "Chaves",
+      "data": "2024-04-07T11:20:00.234Z"
     },
     {
       "id": "b807",
       "favorito": false,
       "conteudo": "Melhor professor, o fracasso é!",
-      "autoria": "Mestre Yoda"
+      "autoria": "Mestre Yoda",
+      "data": "2024-05-19T08:00:00.567Z"
     },
     {
       "id": "9f3c",
       "favorito": false,
       "conteudo": "Você não é todo mundo!",
-      "autoria": "Mãe"
+      "autoria": "Mãe",
+      "data": "2024-06-12T19:00:00.890Z"
     },
     {
       "id": "6a2b",
       "favorito": false,
       "conteudo": "Foi sem querer querendo!",
-      "autoria": "Chaves"
+      "autoria": "Chaves",
+      "data": "2024-07-01T13:10:00.345Z"
     },
     {
       "id": "7e2a",
       "favorito": false,
       "conteudo": "Que a força esteja com você!",
-      "autoria": "Mestre Yoda"
+      "autoria": "Mestre Yoda",
+      "data": "2024-08-23T06:55:00.678Z"
     },
     {
       "id": "5c8f",
       "favorito": false,
       "conteudo": "Resolver o bug não consegue? Esfriar a cabeça vc deve.",
-      "autoria": "Mestre Yoda"
+      "autoria": "Mestre Yoda",
+      "data": "2024-09-17T21:30:00.901Z"
     },
     {
       "id": "2d6e",
       "favorito": false,
       "conteudo": "Não faça drama, faça café! :)",
-      "autoria": "Dev"
+      "autoria": "Dev",
+      "data": "2024-10-05T15:25:00.111Z"
     },
     {
       "id": "dff8",
       "favorito": false,
       "conteudo": "          Fiz um CRUD em JS!",
-      "autoria": "Dev Feliz"
+      "autoria": "Dev Feliz",
+      "data": "2024-11-11T10:00:00.222Z"
+    },
+    {
+      "id": "84f7",
+      "conteudo": "Testando formato de data",
+      "autoria": "Dev",
+      "data": "2025-03-11"
     }
   ]
 }

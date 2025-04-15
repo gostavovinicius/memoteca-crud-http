@@ -18,16 +18,21 @@ async function manipularSubmissaoFormulario(event) {
     const id = document.getElementById("pensamento-id").value
     const conteudo = document.getElementById("pensamento-conteudo").value
     const autoria = document.getElementById("pensamento-autoria").value
+    const data = document.getElementById("pensamento-data").value
 
-    try {
-        if (id) {
-            await api.editarPensamento({ id, conteudo, autoria })
-        } else {
-        await api.salvarPensamento({ conteudo, autoria })
+    if(!validarData(data)){
+        alert("Não é permitido o cadastro de datas futuras!")
+    } else {
+        try {
+            if (id) {
+                await api.editarPensamento({ id, conteudo, autoria, data })
+            } else {
+            await api.salvarPensamento({ conteudo, autoria, data })
+            }
+            ui.renderizarPensamentos()
+        } catch {
+        alert('Erro ao salvar o pensamento!') 
         }
-        ui.renderizarPensamentos()
-    } catch {
-       alert('Erro ao salvar o pensamento!') 
     }
 }
 
@@ -43,4 +48,11 @@ async function manipularBusca() {
     } catch (error) {
         alert('Erro ao realizar busca!')
     }
+}
+
+function validarData(data) {
+    const dataAtual = new Date()
+    const dataInserida = new Date(data)
+
+    return dataInserida <= dataAtual
 }
