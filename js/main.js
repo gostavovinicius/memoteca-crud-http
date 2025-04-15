@@ -1,12 +1,26 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+const pensamentosSet = new Set()
+
+async function adicionarChaveAoPensamento() {
+    try {
+        const pensamentos = await api.buscarPensamentos()
+        pensamentos.forEach(pensamento => {
+            const chavePensamento = `${pensamento.conteudo.trim().toLowerCase()}-${pensamento.autoria.trim().toLowerCase()}`
+            pensamentosSet.add(chavePensamento)
+        })
+    } catch (error) {
+        alert("Erro ao adicionar chave ao pensamento.")
+    }
+}
+
 function removerEspacos(string) {
     return string.replaceAll(/\s+/g, '')
 }
 
 const regexConteudo = /^[A-Za-z\s]{10,}$/
-const regexAutoria = /^[A-ZA-Z]{3,15}$/
+const regexAutoria = /^[A-ZA-Z\s]{3,15}$/
 
 function validarConteudo(conteudo) {
     return regexConteudo.test(conteudo)
@@ -18,6 +32,7 @@ function validarAutoria(autoria) {
 
 document.addEventListener("DOMContentLoaded", () => {
     ui.renderizarPensamentos()
+    adicionarChaveAoPensamento()
 
     const formularioPensamento = document.getElementById('pensamento-form')
     const botaoCancelar = document.getElementById('botao-cancelar')
@@ -45,22 +60,31 @@ async function manipularSubmissaoFormulario(event) {
     }
 
     if(!validarAutoria(autoriaSemEspacos)) {
-        alert("É permitido a inclusão apenas de letras com de 3 à 15 caracteres.")
+        alert("É permitido a inclusão apenas de letras e espaços com de 3 à 15 caracteres.")
     }
 
     if(!validarData(data)) {
         alert("Não é permitido o cadastro de datas futuras!")
-    } else {
-        try {
-            if (id) {
-                await api.editarPensamento({ id, conteudo, autoria, data })
-            } else {
-            await api.salvarPensamento({ conteudo, autoria, data })
-            }
-            ui.renderizarPensamentos()
-        } catch {
-        alert('Erro ao salvar o pensamento!') 
+    } 
+        
+    const chaveNovoPensamento = 
+    `${conteudo.trim().toLowerCase()}-${autoria.trim().toLowerCase()}`
+
+    if(pensamentosSet.has(chaveNovoPensamento)) {
+        alert("Esse pensamento já existe!")
+
+        return
+    }
+    
+    try {
+        if (id) {
+            await api.editarPensamento({ id, conteudo, autoria, data })
+        } else {
+        await api.salvarPensamento({ conteudo, autoria, data })
         }
+        ui.renderizarPensamentos()
+    } catch {
+        alert('Erro ao salvar o pensamento!') 
     }
 }
 
